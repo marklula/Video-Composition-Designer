@@ -4,6 +4,7 @@ const codecSelector = document.getElementById('codec-selector');
 const layoutSelector = document.getElementById('layout-selector');
 const leftMenu = document.getElementById('left-menu');
 const resetButton = document.getElementById('reset-button');  // Reset button element
+const commandButton = document.getElementById('command-button');  // Reset button element
 const itemList = document.getElementById('item-list');  // Right menu item list
 let printed = false;
 let droppedItems = [];
@@ -220,4 +221,13 @@ layoutSelector.addEventListener('change', () => {
     document.getElementById('xcommand').insertAdjacentText("beforeend","Layout: PIP PIPPositon:Lowerright PIPSize: Large");
     printed = true;
   }
+});
+
+commandButton.addEventListener('click', () => {
+  const commandText = document.getElementById('xcommand').innerText;
+  navigator.clipboard.writeText(commandText).then(() => {
+      alert('xCommand copied to clipboard!');
+  }).catch(err => {
+      console.error('Failed to copy xCommand: ', err);
+  });
 });

@@ -152,6 +152,21 @@ option {
   width: 100%;  /* Ensures the button takes the full width of its container */
 }
 
+/* Command button styling */
+#command-button {
+  background-color: #388e3c;  /* Green color for the reset button */
+  color: white;                /* White text */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;  /* Adds space above the reset button */
+  width: 100%;  /* Ensures the button takes the full width of its container */
+}
+
 /* Reset button hover effect */
 #reset-button:hover {
   background-color: #c9302c;  /* Darker red o
