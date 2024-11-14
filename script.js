@@ -35,9 +35,6 @@ canvas.addEventListener('drop', (e) => {
     droppedItems.push(droppedItem);
     updateItemList(); // Update the right-hand menu with the new order
     applyLayout(); // Apply the selected layout after an item is dropped
-
-    // Update xCommand Output
-    document.getElementById('xcommand').insertAdjacentText("beforeend", " ConnectorId: " + itemName);
   }
 });
 
@@ -57,20 +54,25 @@ function applyCodec() {
   }
 }
 
-// Apply layout based on selected option
+// Helper function to get dropped items as a string for xCommand
+function getDroppedItemsString() {
+  return droppedItems.map(item => `ConnectorId: ${item.innerText}`).join(' ');
+}
+
+// Apply layout based on selected option and update xCommand output
 function applyLayout() {
   const layoutType = layoutSelector.value;
   const itemCount = droppedItems.length;
 
   // Adjust xCommand output based on layout type
   if (layoutType === 'equal') {
-    document.getElementById('xcommand').innerText = "xCommand Video Input SetMainVideoSource Layout: Equal";
+    document.getElementById('xcommand').innerText = `xCommand Video Input SetMainVideoSource Layout: Equal ${getDroppedItemsString()}`;
   } else if (layoutType === 'prominent') {
-    document.getElementById('xcommand').innerText = "xCommand Video Input SetMainVideoSource Layout: Prominent";
+    document.getElementById('xcommand').innerText = `xCommand Video Input SetMainVideoSource Layout: Prominent ${getDroppedItemsString()}`;
   } else if (layoutType === 'small pip') {
-    document.getElementById('xcommand').innerText = "xCommand Video Input SetMainVideoSource Layout: PIP PIPPosition:Lowerright PIPSize: Auto";
+    document.getElementById('xcommand').innerText = `xCommand Video Input SetMainVideoSource Layout: PIP PIPPosition:Lowerright PIPSize: Auto ${getDroppedItemsString()}`;
   } else if (layoutType === 'large pip') {
-    document.getElementById('xcommand').innerText = "xCommand Video Input SetMainVideoSource Layout: PIP PIPPosition:Lowerright PIPSize: Large";
+    document.getElementById('xcommand').innerText = `xCommand Video Input SetMainVideoSource Layout: PIP PIPPosition:Lowerright PIPSize: Large ${getDroppedItemsString()}`;
   }
 
   // Apply layout styling based on itemCount and layoutType
@@ -188,7 +190,6 @@ resetButton.addEventListener('click', () => {
 
   // Reset xCommand Output to default
   document.getElementById('xcommand').innerText = "xCommand Video Input SetMainVideoSource Layout: Equal";
-  document.getElementById('layout-selector').value = "equal";
 });
 
 // Event listener for copying the command
