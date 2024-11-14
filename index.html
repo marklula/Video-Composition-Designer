@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Composition Designer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header with the title of the page -->
+  <header>
+    <h1>Video Composition Designer</h1>
+  </header>
+
+  <div id="container">
+    <!-- Left Menu with draggable items -->
+    <div id="left-menu">
+      <h4>Select Codec:</h4>
+      <select id="codec-selector" onchange='applyCodec();'>
+        <option value="Codec Pro">Codec Pro</option>
+        <option value="Codec EQ">Codec EQ</option>
+      </select>
+
+      <h4> Available Video Inputs:</h3>
+      <div class="input-item" draggable="true" id='1'>1</div>
+      <div class="input-item" draggable="true" id='2'>2</div>
+      <div class="input-item" draggable="true" id='3'>3</div>      
+      <div class="input-item" draggable="true" id='4'>4</div>
+      <div class="input-item" draggable="true" id='5'>5</div>
+    </div>
+
+    <!-- Canvas where items will be dropped -->
+    <div id="canvas"></div>
+
+    <!-- Right Menu that displays the order of dropped items -->
+    <div id="right-menu">
+      <h4>Select Layout:</h4>
+      <select id="layout-selector">
+        <option value='select'>Select a Layout</option>
+        <option value="equal">Equal</option>
+        <option value="prominent">Prominent</option>
+        <option value="small pip">Small PiP</option>
+        <option value="large pip">Large PiP</option>
+      </select>
+
+      <h4>Order of Inputs:</h4>
+      <ul id="item-list"></ul>
+
+      <button id="reset-button">Reset Canvas</button>
+
+      <h4>xCommand Output:</h4>
+      <p id='xcommand'>xCommand Video Input SetMainVideoSource </p>
+      
+    </div>
+    
+  </div>
+
+  <!-- Script to handle drag-and-drop and layout logic -->
+  <script src="script.js"></script>
+</body>
+</html>
